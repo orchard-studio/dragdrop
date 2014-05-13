@@ -9,13 +9,34 @@
 	encoding="UTF-8"
 	indent="yes" />
 
-<xsl:template match="/">
-	<h1><xsl:value-of select="$page-title"/></h1>
-   <p>Boom</p>
-  <xsl:apply-templates select="//data/section-1/entry" mode="media"/>
+<xsl:template match="/">	
+  <h1>
+      Images
+    </h1>
+  <ul class="thumb">    
+    
+  <xsl:apply-templates select="//data/section-2/entry" mode="media"/>
+  </ul>
+    <hr/>
+  <h1>
+      Videos
+    </h1>
+  <ul class="thumb">       
+    <xsl:apply-templates select="//data/section-3/entry" mode="media"/>
+  </ul>
 </xsl:template>
-      <xsl:template match="//data/section-1/entry" mode="media">
-        <div id="div1" ondrop="drop(event,'{images/filename}:capn')" ondragover="allowDrop(event)"></div>
-        <img id="drag1" src="{$workspace}/{images/@path}/{images/filename}" width="300px" draggable="true" ondragstart="drag(event,'{images/filename}:capn',this)"/>
+      <xsl:template match="//data/section-2/entry" mode="media">        
+        <li>
+        <a class="hover_image" href="{$workspace}/{images/@path}/{images/filename}">
+          <img id="drag1" src="{$workspace}/{images/@path}/{images/filename}" width="300px" draggable="true" ondragstart="drag(event,'{images/filename}:capn',this)"/>
+         </a>
+          </li>
+      </xsl:template>
+      <xsl:template match="//data/section-3/entry" mode="media">        
+        <li>
+          <span class="hover_video" data-video-id="y-{video-id}">
+           <img id="drag1" src="{stills/thumbnail}" width="{stills/oembed/width}" draggable="true" ondragstart="drag(event,'{video-id}:capn',this)"/>                      
+            </span>
+          </li>
       </xsl:template>
 </xsl:stylesheet>
