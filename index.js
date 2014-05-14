@@ -13,15 +13,16 @@ function drop(ev,media){
 	var data= media;//ev.dataTransfer.getData("Text");
 	ev.target.appendChild(document.getElementById(data));
 }
-$(document).ready(function(){
-	$('.thumb .hover_image img').each(function(){
-		$(this).hoverZoom();
-	});
+$(document).ready(function(){	
 	$(".hover_video").click(function(e){
+			e.preventDefault();			
+			$(this).next('.video-wrapper').show();
+			$(this).parent('.video-target').siblings('.close').show();
+			
+	});
+	$('.close').click(function(e){
 		e.preventDefault();
-			$(this).jqueryVideoLightning({
-            autoplay: 1,
-            color: "white"
-        });
-	});	
+		$(this).hide();
+		$(this).siblings('.video-target').find('.video-wrapper').hide();
+	});
 });
