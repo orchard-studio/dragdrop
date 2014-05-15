@@ -10,7 +10,7 @@
 	indent="yes" />
 
 <xsl:template match="/">
-	<h1><a href="" id="images">Images</a></h1><h1><a href="" id="videos">Videos</a></h1>
+	<h1><a href="" id="images">Images</a></h1><h1><a href="" id="videos">Videos</a></h1><h1><a href="" id="files">Files</a></h1>
 	<div class="content-block">
 		
 	</div>
